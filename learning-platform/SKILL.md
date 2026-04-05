@@ -62,7 +62,7 @@ Recommended entity backbone:
 
 ## Strong opinions / defaults
 
-- Model lifecycle states explicitly (applied, screened, interviewed, hired, etc.) and disallow illegal transitions.
+- Model lifecycle states explicitly (enrolled, started, in-progress, completed, failed, certified) and disallow illegal transitions.
 - Prefer idempotent command handlers (`command_id` with unique constraint) for all externally triggered actions.
 - Model lifecycle states as enums plus guarded transition functions; reject invalid transitions early.
 

@@ -36,9 +36,9 @@ Every curated reference doc must include:
 
 ## Tier policy
 
-- Tier 1: SKILL.md only
-- Tier 2: SKILL.md + references/implementation.md
-- Tier 3: Tier 2 + smoke validation evidence (via scripts/smoke)
+- Tier 1: SKILL.md required; references are optional but encouraged
+- Tier 2: SKILL.md + references/implementation.md required
+- Tier 3: Tier 2 + smoke validation evidence (via scripts/smoke) required
 
 ## Deterministic tier allocation
 

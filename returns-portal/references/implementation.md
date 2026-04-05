@@ -4,10 +4,10 @@ Use this source audit format to keep guidance authentic and code-backed.
 
 | Source type | URL | Code/example anchor | Rationale link |
 |---|---|---|---|
-| Official docs | [source](https://docs.stripe.com/billing/subscriptions/overview) | Subscription lifecycle + webhook recommendations | Billing states and retries should follow provider lifecycle semantics |
-| Official docs | [source](https://docs.stripe.com/billing/subscriptions/subscription-schedules/use-cases) | Schedule phase examples | Planned upgrades/downgrades are first-class in subscription systems |
-| Official docs | [source](https://docs.stripe.com/webhooks?lang=node) | Node webhook signature verification | Financial events must be verified and idempotent |
-| OSS repo | [source](https://github.com/saleor/saleor) | Headless commerce architecture in production OSS | Admin/seller workflows need explicit domain boundaries |
+| Official docs | [source](https://shopify.dev/docs/api/admin-rest/latest/resources/return) | Return object lifecycle and status transitions | RMA portals need explicit eligibility and lifecycle states for return authorization |
+| Official docs | [source](https://docs.stripe.com/refunds) | Refund lifecycle, partial refunds, and failure handling | Reverse-logistics closure must align with payment refund reconciliation semantics |
+| Official docs | [source](https://docs.github.com/en/webhooks/using-webhooks/best-practices-for-using-webhooks) | Signature validation, retries, and idempotent consumers | Return/refund integrations should be replay-safe and operationally observable |
+| OSS repo | [source](https://github.com/saleor/saleor) | Order return/refund related domain modules in commerce core | Returns workflows need clear order, fulfillment, and payment boundary handling |
 
 ## Category-specific notes
 

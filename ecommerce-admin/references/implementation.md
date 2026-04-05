@@ -4,10 +4,10 @@ Use this source audit format to keep guidance authentic and code-backed.
 
 | Source type | URL | Code/example anchor | Rationale link |
 |---|---|---|---|
-| Official docs | [source](https://docs.stripe.com/billing/subscriptions/overview) | Subscription lifecycle + webhook recommendations | Billing states and retries should follow provider lifecycle semantics |
-| Official docs | [source](https://docs.stripe.com/billing/subscriptions/subscription-schedules/use-cases) | Schedule phase examples | Planned upgrades/downgrades are first-class in subscription systems |
-| Official docs | [source](https://docs.stripe.com/webhooks?lang=node) | Node webhook signature verification | Financial events must be verified and idempotent |
-| OSS repo | [source](https://github.com/saleor/saleor) | Headless commerce architecture in production OSS | Admin/seller workflows need explicit domain boundaries |
+| Official docs | [source](https://shopify.dev/docs/api/admin-rest/latest/resources/product) | Product CRUD and publication flow examples | Catalog operations in admin consoles need explicit product lifecycle coverage |
+| Official docs | [source](https://shopify.dev/docs/api/admin-rest/latest/resources/order) | Order status, line item, and edit examples | Admin order workflows should be grounded in concrete order-management primitives |
+| Official docs | [source](https://docs.stripe.com/refunds) | Refund lifecycle and partial refund behavior | Refund operations should follow provider-backed finance and reconciliation semantics |
+| OSS repo | [source](https://github.com/saleor/saleor) | Order, fulfillment, and dashboard domain boundaries in production OSS commerce | Admin workflows need explicit domain boundaries across catalog, order, and fulfillment operations |
 
 ## Category-specific notes
 
