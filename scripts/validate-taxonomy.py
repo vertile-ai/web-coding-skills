@@ -5,7 +5,11 @@ from pathlib import Path
 import re
 import sys
 
-import yaml
+try:
+    import yaml
+except ModuleNotFoundError:
+    print('[FAIL] Missing dependency: PyYAML. Install with: pip install pyyaml')
+    sys.exit(1)
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGINAL = {"2d-game", "3d-game", "video-streaming"}

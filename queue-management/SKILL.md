@@ -34,9 +34,9 @@ Queue management software for tokenized service order, wait-time estimation, and
 
 Additional category defaults:
 
-- PostgreSQL + geospatial index
-- Optimization worker
-- Map routing API integration
+- Fast in-memory queue state cache for live counters
+- Wait-time estimator worker with historical service-time windows
+- Counter/lane capacity policy engine for priority and no-show handling
 
 ## Module split
 
@@ -50,7 +50,7 @@ Additional category defaults:
 
 ## Data / workflow model
 
-Demand intake -> capacity lookup -> slot/route optimization -> confirmation -> exception handling.
+Ticket issued -> wait-time estimated -> lane assignment -> called/served -> no-show or completion.
 
 Recommended entity backbone:
 
@@ -62,13 +62,13 @@ Recommended entity backbone:
 
 ## Strong opinions / defaults
 
-- Separate optimization from booking writes; compute candidate plans in workers, commit minimal final state.
+- Keep ticket issuance and serve events append-only; derive live queue projections from durable events.
 - Prefer idempotent command handlers (`command_id` with unique constraint) for all externally triggered actions.
 - Model lifecycle states as enums plus guarded transition functions; reject invalid transitions early.
 
 ## Overengineering warnings
 
-- Avoid synchronous routing/optimization in request handlers.
+- Avoid synchronous wait-time recomputation on every request; recompute in short interval workers.
 - Do not add event sourcing or CQRS unless transition and audit requirements clearly demand it.
 - Avoid premature multi-region writes before single-region correctness and replay tooling exist.
 

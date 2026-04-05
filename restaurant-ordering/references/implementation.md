@@ -4,10 +4,10 @@ Use this source audit format to keep guidance authentic and code-backed.
 
 | Source type | URL | Code/example anchor | Rationale link |
 |---|---|---|---|
-| Official docs | [source](https://hl7.org/fhir/R4/patient.html) | FHIR Patient resource definitions | Healthcare workflow categories need standards-based data modeling |
-| OSS repo | [source](https://github.com/medplum/medplum) | FHIR-native healthcare platform architecture | Telehealth/intake systems benefit from proven FHIR-first patterns |
-| Official docs | [source](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) | RLS policy examples | Sensitive vertical data requires per-tenant/per-role data isolation |
-| Official docs | [source](https://docs.temporal.io/workflows) | Workflow durability and retries | Inventory/fulfillment/clinical intake flows need durable orchestration |
+| Official docs | [source](https://developer.squareup.com/docs/orders-api/overview) | Order lifecycle and line-item examples | Restaurant ordering needs explicit order state transitions and fulfillment semantics |
+| Official docs | [source](https://developer.squareup.com/docs/catalog-api/what-it-does) | Catalog object model for items/modifiers | Menu modeling should be normalized for item options and modifier combinations |
+| Official docs | [source](https://docs.stripe.com/refunds) | Refund lifecycle and partial refund behavior | Cancellation/refund flows need provider-backed reconciliation semantics |
+| OSS repo | [source](https://github.com/medusajs/medusa) | `packages/modules/order` domain services and workflow patterns | Ordering systems benefit from modular order domain boundaries and extensible workflows |
 
 ## Category-specific notes
 
