@@ -16,6 +16,22 @@ ORIGINAL = {"2d-game", "3d-game", "video-streaming"}
 IGNORE = {".git", ".codex", ".omx", "node_modules", "docs", "scripts"}
 
 
+REQUIRED_SKILL_HEADERS = [
+    "## Purpose / category boundary",
+    "## When to use",
+    "## When not to use",
+    "## Baseline stack",
+    "## Module split",
+    "## Data / workflow model",
+    "## Strong opinions / defaults",
+    "## Overengineering warnings",
+    "## TS/Python example note",
+    "## References / local reference links",
+]
+
+SOURCE_AUDIT_HEADER = "| Source type | URL | Code/example anchor | Rationale link |"
+
+
 def fail(msg: str) -> None:
     print(f"[FAIL] {msg}")
     sys.exit(1)
@@ -45,6 +61,10 @@ def main() -> None:
         suffix = name.removeprefix("web-coding-skills-")
         if len([s for s in suffix.split('-') if s]) > 3:
             fail(f"more than 3 slugs in {c.name}: {name}")
+
+        missing_headers = [h for h in REQUIRED_SKILL_HEADERS if h not in text]
+        if missing_headers:
+            fail(f"missing required SKILL headers in {c.name}: {missing_headers}")
 
         langs = re.findall(r"```([A-Za-z0-9_-]+)", text)
         bad_langs = [x for x in langs if x.lower() not in {"ts", "typescript", "python"}]
@@ -92,6 +112,12 @@ def main() -> None:
         ref = ROOT / c / "references" / "implementation.md"
         if not ref.exists():
             fail(f"missing references/implementation.md for {c}")
+        ref_text = ref.read_text()
+        if SOURCE_AUDIT_HEADER not in ref_text:
+            fail(f"missing source-audit header table in {c}/references/implementation.md")
+        expected_note = f"- Category: `{c}`"
+        if expected_note not in ref_text:
+            fail(f"category-specific note mismatch in {c}/references/implementation.md")
 
     tier3 = [r["category"] for r in rows if r["artifact_tier"] == "tier3"]
     for c in tier3:

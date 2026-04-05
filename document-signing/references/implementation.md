@@ -4,10 +4,10 @@ Use this source audit format to keep guidance authentic and code-backed.
 
 | Source type | URL | Code/example anchor | Rationale link |
 |---|---|---|---|
-| Official docs | [source](https://socket.io/docs/v4/rooms/) | Rooms join/leave + broadcast examples | Targeted fanout and tenant/user rooms are core chat primitives |
-| Official docs | [source](https://www.twilio.com/docs/conversations) | Conversations SDK/API quickstarts | Omnichannel messaging patterns map to support/chat products |
-| Official docs | [source](https://www.twilio.com/docs/usage/webhooks) | Webhook handshake and endpoint behavior | Inbound messaging/events must use verified webhook endpoints |
-| OSS repo | [source](https://github.com/chatwoot/chatwoot) | Open-source support desk architecture | Support domain boundaries and operational concerns are proven in production |
+| Official docs | [source](https://developers.docusign.com/docs/esign-rest-api/how-to/request-signature-in-app/) | Envelope creation and signature request flow | Signing systems need explicit envelope lifecycle and signer orchestration |
+| Official docs | [source](https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/recipients/) | Recipient roles and routing order | Signer order and role modeling must be first-class workflow constraints |
+| Official docs | [source](https://www.rfc-editor.org/rfc/rfc3161) | Trusted timestamp protocol semantics | Tamper-evident signing requires timestamp-aware evidence packaging |
+| OSS repo | [source](https://github.com/docusealco/docuseal) | Open-source e-signature service architecture | Signature products benefit from clear audit trail and envelope domain boundaries |
 
 ## Category-specific notes
 

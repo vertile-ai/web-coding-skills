@@ -4,10 +4,10 @@ Use this source audit format to keep guidance authentic and code-backed.
 
 | Source type | URL | Code/example anchor | Rationale link |
 |---|---|---|---|
-| Official docs | [source](https://developers.google.com/optimization/routing/vrptw) | VRPTW Python example | Dispatch/route categories need formal optimization primitives |
-| Official docs | [source](https://docs.mapbox.com/api/navigation/directions/) | Directions API request/response examples | Route planning requires traffic-aware path computation |
-| OSS repo | [source](https://github.com/calcom/cal.com) | Repository architecture and scheduling domain | Booking flows need battle-tested scheduling concepts |
-| Official docs | [source](https://docs.temporal.io/workflows) | Workflow retries and compensation | Reschedule/reassignment flows benefit from workflow orchestration |
+| Official docs | [source](https://www.twilio.com/docs/taskrouter) | TaskRouter queues/workers/workflows model | Queue systems need explicit queue, worker, and routing primitives for lane assignment |
+| Official docs | [source](https://www.twilio.com/docs/taskrouter/workflow-configuration) | Workflow expressions and task routing rules | Priority lanes and no-show handling should be policy-driven, not hardcoded branches |
+| Official docs | [source](https://www.postgresql.org/docs/current/functions-window.html) | Window functions for rolling averages/percentiles | Wait-time estimation should be computed from historical service-time distributions |
+| Official docs | [source](https://socket.io/docs/v4/rooms/) | Room-targeted broadcast patterns | Called/served state should fan out in realtime to the right counter/lane displays |
 
 ## Category-specific notes
 

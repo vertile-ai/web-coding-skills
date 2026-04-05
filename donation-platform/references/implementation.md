@@ -4,10 +4,10 @@ Use this source audit format to keep guidance authentic and code-backed.
 
 | Source type | URL | Code/example anchor | Rationale link |
 |---|---|---|---|
-| Official docs | [source](https://www.postgresql.org/docs/current/textsearch-intro.html) | Full-text search intro and query operators | Job/candidate/course discovery needs ranked textual search |
-| Official docs | [source](https://www.postgresql.org/docs/current/gin.html) | GIN indexing strategy | Search-heavy portals need proper inverted indexes |
-| Official docs | [source](https://docs.temporal.io/workflows) | Workflow orchestration model | Multi-stage applicant/learning lifecycles fit durable workflows |
-| OSS repo | [source](https://github.com/calcom/cal.com) | Scheduling and lifecycle orchestration patterns | Interview/training/event scheduling shares queueing/availability constraints |
+| Official docs | [source](https://docs.stripe.com/payments/checkout/accept-a-payment) | Checkout payment session flow | Donation checkout should use a resilient provider-backed payment initiation flow |
+| Official docs | [source](https://docs.stripe.com/billing/subscriptions/overview) | Subscription lifecycle for recurring charges | Recurring pledges should model retries and lifecycle transitions explicitly |
+| Official docs | [source](https://docs.stripe.com/webhooks) | Signature verification and retry behavior | Donation payment events must be authenticated and idempotently processed |
+| OSS repo | [source](https://github.com/opencollective/opencollective) | Collective contribution and payout domain modeling | Donation platforms need transparent contribution, allocation, and reporting boundaries |
 
 ## Category-specific notes
 
