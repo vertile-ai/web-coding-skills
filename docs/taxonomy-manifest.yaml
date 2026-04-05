@@ -1,0 +1,420 @@
+version: 1
+taxonomy_rule: niche-by-category-size (not popularity)
+tier_policy:
+  tier2_rule: first two categories per family
+  tier3_rule: first category of each family from tier2
+families:
+- key: operations-admin
+  title: Operations & Admin Workflows
+  categories:
+  - category: ops-control-center
+    family: operations-admin
+    artifact_tier: tier3
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: facility-ops
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: true
+  - category: facility-ops
+    family: operations-admin
+    artifact_tier: tier2
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: ops-control-center
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: incident-console
+    family: operations-admin
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: facility-ops
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: property-portal
+    family: operations-admin
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: incident-console
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: tenant-portal
+    family: operations-admin
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: property-portal
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: procurement-portal
+    family: operations-admin
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: tenant-portal
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+- key: field-scheduling
+  title: Field, Dispatch & Scheduling
+  categories:
+  - category: field-service
+    family: field-scheduling
+    artifact_tier: tier3
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: dispatch-board
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: true
+  - category: dispatch-board
+    family: field-scheduling
+    artifact_tier: tier2
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: field-service
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: route-planner
+    family: field-scheduling
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: dispatch-board
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: booking-engine
+    family: field-scheduling
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: route-planner
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: appointment-scheduler
+    family: field-scheduling
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: booking-engine
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: queue-management
+    family: field-scheduling
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: appointment-scheduler
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+- key: commerce-finance
+  title: Commerce & Finance Operations
+  categories:
+  - category: invoice-ops
+    family: commerce-finance
+    artifact_tier: tier3
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: subscription-billing
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: true
+  - category: subscription-billing
+    family: commerce-finance
+    artifact_tier: tier2
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: invoice-ops
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: expense-management
+    family: commerce-finance
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: subscription-billing
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: ecommerce-admin
+    family: commerce-finance
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: expense-management
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: marketplace-seller
+    family: commerce-finance
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: ecommerce-admin
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: returns-portal
+    family: commerce-finance
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: marketplace-seller
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+- key: support-collaboration
+  title: Support & Collaboration
+  categories:
+  - category: customer-support
+    family: support-collaboration
+    artifact_tier: tier3
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: live-chat
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: true
+  - category: live-chat
+    family: support-collaboration
+    artifact_tier: tier2
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: customer-support
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: knowledge-base
+    family: support-collaboration
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: live-chat
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: community-forum
+    family: support-collaboration
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: knowledge-base
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: crm-workspace
+    family: support-collaboration
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: community-forum
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: document-signing
+    family: support-collaboration
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: crm-workspace
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+- key: people-learning-engagement
+  title: People, Learning & Engagement
+  categories:
+  - category: job-board
+    family: people-learning-engagement
+    artifact_tier: tier3
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: applicant-tracking
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: true
+  - category: applicant-tracking
+    family: people-learning-engagement
+    artifact_tier: tier2
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: job-board
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: learning-platform
+    family: people-learning-engagement
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: applicant-tracking
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: exam-proctoring
+    family: people-learning-engagement
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: learning-platform
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: event-ticketing
+    family: people-learning-engagement
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: exam-proctoring
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: donation-platform
+    family: people-learning-engagement
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: event-ticketing
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+- key: vertical-operations
+  title: Vertical Operations
+  categories:
+  - category: telehealth-portal
+    family: vertical-operations
+    artifact_tier: tier3
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: patient-intake
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: true
+  - category: patient-intake
+    family: vertical-operations
+    artifact_tier: tier2
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: telehealth-portal
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: restaurant-ordering
+    family: vertical-operations
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: patient-intake
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: kitchen-display
+    family: vertical-operations
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: restaurant-ordering
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: inventory-control
+    family: vertical-operations
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: kitchen-display
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
+  - category: warehouse-console
+    family: vertical-operations
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - workflow-state transitions
+    - tenant-scoped authorization
+    - async side-effect handling
+    nearest_sibling: inventory-control
+    overlap_note: 'Category accepted: boundary and workflow pressures differ enough
+      from nearest sibling.'
+    smoke_validation_eligibility: false
