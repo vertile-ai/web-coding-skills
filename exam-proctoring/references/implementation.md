@@ -4,10 +4,10 @@ Use this source audit format to keep guidance authentic and code-backed.
 
 | Source type | URL | Code/example anchor | Rationale link |
 |---|---|---|---|
-| Official docs | [source](https://www.postgresql.org/docs/current/textsearch-intro.html) | Full-text search intro and query operators | Job/candidate/course discovery needs ranked textual search |
-| Official docs | [source](https://www.postgresql.org/docs/current/gin.html) | GIN indexing strategy | Search-heavy portals need proper inverted indexes |
-| Official docs | [source](https://docs.temporal.io/workflows) | Workflow orchestration model | Multi-stage applicant/learning lifecycles fit durable workflows |
-| OSS repo | [source](https://github.com/calcom/cal.com) | Scheduling and lifecycle orchestration patterns | Interview/training/event scheduling shares queueing/availability constraints |
+| Official docs | [source](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) | Camera/mic capture API usage | Proctoring sessions need controlled media capture with explicit permission handling |
+| Official docs | [source](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) | Screen capture setup and lifecycle | Exam integrity workflows often require monitored screen-share events |
+| Official docs | [source](https://www.w3.org/TR/webauthn-2/) | WebAuthn ceremonies and assertion model | Candidate identity checks benefit from standards-based strong authentication |
+| OSS repo | [source](https://github.com/openedx/edx-proctoring) | Proctoring workflow service in production LMS ecosystem | Violation events and review queues require explicit proctoring domain workflows |
 
 ## Category-specific notes
 

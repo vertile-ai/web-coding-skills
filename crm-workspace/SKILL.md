@@ -34,9 +34,9 @@ CRM workspace for contact/account timelines, activity capture, and pipeline hand
 
 Additional category defaults:
 
-- Realtime channel service
-- Search index
-- Background notification jobs
+- Contact/account timeline projection store
+- Lead scoring/enrichment worker pipeline
+- Pipeline SLA and handoff reminder jobs
 
 ## Module split
 
@@ -50,7 +50,7 @@ Additional category defaults:
 
 ## Data / workflow model
 
-Inbound message/content -> routing/moderation -> assignment/collaboration -> resolution/publication.
+Lead/contact captured -> qualification and enrichment -> opportunity stage transition -> owner handoff -> closed-won/lost analytics.
 
 Recommended entity backbone:
 
@@ -62,13 +62,13 @@ Recommended entity backbone:
 
 ## Strong opinions / defaults
 
-- Persist commands first, then broadcast; realtime transport is a projection of durable state.
+- Keep account/contact timeline append-only; derive pipeline dashboards from durable activity events.
 - Prefer idempotent command handlers (`command_id` with unique constraint) for all externally triggered actions.
 - Model lifecycle states as enums plus guarded transition functions; reject invalid transitions early.
 
 ## Overengineering warnings
 
-- Do not make websocket messages your source of truth.
+- Do not model CRM stages as free-form labels; enforce allowed transitions with validation rules.
 - Do not add event sourcing or CQRS unless transition and audit requirements clearly demand it.
 - Avoid premature multi-region writes before single-region correctness and replay tooling exist.
 

@@ -34,9 +34,9 @@ Donation platform for campaign funding, recurring pledges, receipts, and impact 
 
 Additional category defaults:
 
-- Search/ranking index
-- Workflow orchestration
-- Audit-ready activity trail
+- Payment provider webhook verification pipeline
+- Recurring pledge scheduler and retry jobs
+- Fund allocation ledger with receipt and audit reporting
 
 ## Module split
 
@@ -50,7 +50,7 @@ Additional category defaults:
 
 ## Data / workflow model
 
-Submission/enrollment -> screening/eligibility -> progression milestones -> analytics/notifications.
+Campaign created -> donor pledge/payment captured -> receipt issued -> allocation posted -> impact report generated.
 
 Recommended entity backbone:
 
@@ -62,13 +62,13 @@ Recommended entity backbone:
 
 ## Strong opinions / defaults
 
-- Model lifecycle states explicitly (applied, screened, interviewed, hired, etc.) and disallow illegal transitions.
+- Model donation lifecycle states explicitly (pledged, authorized, captured, receipted, allocated, refunded) and disallow illegal transitions.
 - Prefer idempotent command handlers (`command_id` with unique constraint) for all externally triggered actions.
 - Model lifecycle states as enums plus guarded transition functions; reject invalid transitions early.
 
 ## Overengineering warnings
 
-- Avoid ad-hoc status strings without transition rules.
+- Avoid mixing accounting allocation state with payment capture state in one status field.
 - Do not add event sourcing or CQRS unless transition and audit requirements clearly demand it.
 - Avoid premature multi-region writes before single-region correctness and replay tooling exist.
 

@@ -34,9 +34,9 @@ Document signing workflow with template generation, signer state tracking, and t
 
 Additional category defaults:
 
-- Realtime channel service
-- Search index
-- Background notification jobs
+- Envelope workflow engine with signer-order rules
+- Tamper-evident document artifact storage and hash verification
+- Reminder/escalation job queue for pending signatures
 
 ## Module split
 
@@ -50,7 +50,7 @@ Additional category defaults:
 
 ## Data / workflow model
 
-Inbound message/content -> routing/moderation -> assignment/collaboration -> resolution/publication.
+Template selected -> envelope created -> signer sequence executed -> signatures completed -> audit package finalized.
 
 Recommended entity backbone:
 
@@ -62,13 +62,13 @@ Recommended entity backbone:
 
 ## Strong opinions / defaults
 
-- Persist commands first, then broadcast; realtime transport is a projection of durable state.
+- Persist immutable signature events and artifact hashes; generate signer status views from that event trail.
 - Prefer idempotent command handlers (`command_id` with unique constraint) for all externally triggered actions.
 - Model lifecycle states as enums plus guarded transition functions; reject invalid transitions early.
 
 ## Overengineering warnings
 
-- Do not make websocket messages your source of truth.
+- Do not treat notification delivery as signature proof; only signed artifacts and audit records are authoritative.
 - Do not add event sourcing or CQRS unless transition and audit requirements clearly demand it.
 - Avoid premature multi-region writes before single-region correctness and replay tooling exist.
 
