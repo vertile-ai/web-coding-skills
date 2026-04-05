@@ -40,8 +40,8 @@ You can find the full list in the [Full List](#full-list) section below.
 
 ## Full List
 
-| Skill | Name | Description |
-|-------|------|-------------|
-| `video-streaming` | Web Video Streaming Platform | Building a web-based video streaming platform. Covers ingest protocols, transcoding pipelines, adaptive delivery (HLS/DASH), real-time chat, CDN distribution, storage strategy, auth, and scalability. |
-| `game/2d` | Web 2D Game | Developing a browser-based 2D game. Covers dependencies, code patterns, module design, WASM/Worker/WebGL trade-offs, and browser APIs for all six web 2D game drives: control, system, rule, content, physics, and network. |
-| `game/3d` | Web 3D Game | Developing a browser-based 3D game. Covers renderer selection, scene graph design, asset pipeline, memory management, shader strategy, physics integration, and browser API trade-offs across six 3D game drives: render, control, system, content, physics, and network. |
+| Skill | Description |
+|-------|-------------|
+| `web-coding-skills-video-streaming` | Building a web-based video streaming platform. Covers ingest protocols, transcoding pipelines, adaptive delivery (HLS/DASH), real-time chat, CDN distribution, storage strategy, auth, and scalability. |
+| `web-coding-skills-2d-game` | Developing a browser-based 2D game. Covers dependencies, code patterns, module design, WASM/Worker/WebGL trade-offs, and browser APIs for all six web 2D game drives: control, system, rule, content, physics, and network. |
+| `coding-skills-web-3d-game` | Developing a browser-based 3D game. Covers renderer selection, scene graph design, asset pipeline, memory management, shader strategy, physics integration, and browser API trade-offs across six 3D game drives: render, control, system, content, physics, and network. |
