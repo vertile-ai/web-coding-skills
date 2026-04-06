@@ -1,8 +1,15 @@
-version: 1
-taxonomy_rule: niche-by-category-size (not popularity)
+version: 2
+taxonomy_rule:
+  business_axis: niche-by-category-size (not popularity)
+  architecture_axis: reuse-by-beneficiary-coverage (>=10 business categories)
 tier_policy:
-  tier2_rule: first two categories per family
-  tier3_rule: first category of each family from tier2
+  business:
+    tier2_rule: first two categories per family
+    tier3_rule: first category of each family from tier2
+  architecture:
+    tier1_rule: SKILL + implementation reference + beneficiary/overlap evidence
+    tier2_rule: tier1 + source_audit_min_rows >= 3 + README mention
+    tier3_rule: tier2 + smoke validation evidence
 families:
 - key: operations-admin
   title: Operations & Admin Workflows
@@ -418,3 +425,106 @@ families:
     overlap_note: 'Category accepted: boundary and workflow pressures differ enough
       from nearest sibling.'
     smoke_validation_eligibility: false
+- key: architecture-identity-access
+  title: Architecture — Identity & Access Modules
+  axis: architecture
+  categories:
+  - category: auth-social-sso
+    family: architecture-identity-access
+    axis: architecture
+    artifact_tier: tier2
+    distinct_implementation_drives:
+    - provider callback verification
+    - account-linking and identity conflict handling
+    - session/token lifecycle hardening
+    architecture_boundary: Social login identity module limited to Google/GitHub OAuth flows and linked-session management.
+    proof:
+      beneficiary_matrix_ref: auth-social-sso/references/implementation.md#beneficiary-matrix
+      beneficiary_min_categories: 10
+      overlap_review_ref: auth-social-sso/references/implementation.md#overlap-review
+      overlap_required_siblings: 3
+      source_audit_min_rows: 3
+    artifacts:
+      skill_md: true
+      implementation_ref: true
+      smoke_required: false
+  - category: tenant-rbac-policy
+    family: architecture-identity-access
+    axis: architecture
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - tenant-scoped permission graph design
+    - policy evaluation and caching boundaries
+    - role-change auditability
+    architecture_boundary: Tenant-aware RBAC policy module for application-level authorization checks and permission evolution.
+    proof:
+      beneficiary_matrix_ref: tenant-rbac-policy/references/implementation.md#beneficiary-matrix
+      beneficiary_min_categories: 10
+      overlap_review_ref: tenant-rbac-policy/references/implementation.md#overlap-review
+      overlap_required_siblings: 3
+      source_audit_min_rows: 1
+    artifacts:
+      skill_md: true
+      implementation_ref: true
+      smoke_required: false
+- key: architecture-workflow-integration
+  title: Architecture — Workflow & Integration Modules
+  axis: architecture
+  categories:
+  - category: async-job-orchestration
+    family: architecture-workflow-integration
+    axis: architecture
+    artifact_tier: tier2
+    distinct_implementation_drives:
+    - idempotent job execution guarantees
+    - retry/backoff and dead-letter handling
+    - workflow compensation boundaries
+    architecture_boundary: Asynchronous job orchestration module for durable background execution and compensation-safe workflow steps.
+    proof:
+      beneficiary_matrix_ref: async-job-orchestration/references/implementation.md#beneficiary-matrix
+      beneficiary_min_categories: 10
+      overlap_review_ref: async-job-orchestration/references/implementation.md#overlap-review
+      overlap_required_siblings: 3
+      source_audit_min_rows: 3
+    artifacts:
+      skill_md: true
+      implementation_ref: true
+      smoke_required: false
+  - category: domain-event-pubsub
+    family: architecture-workflow-integration
+    axis: architecture
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - event contract versioning
+    - at-least-once consumer idempotency
+    - producer/consumer decoupling boundaries
+    architecture_boundary: Domain event pub/sub module for business-event propagation and asynchronous consumer orchestration.
+    proof:
+      beneficiary_matrix_ref: domain-event-pubsub/references/implementation.md#beneficiary-matrix
+      beneficiary_min_categories: 10
+      overlap_review_ref: domain-event-pubsub/references/implementation.md#overlap-review
+      overlap_required_siblings: 3
+      source_audit_min_rows: 1
+    artifacts:
+      skill_md: true
+      implementation_ref: true
+      smoke_required: false
+  - category: object-storage-pipeline
+    family: architecture-workflow-integration
+    axis: architecture
+    artifact_tier: tier1
+    distinct_implementation_drives:
+    - upload validation and malware-safe staging
+    - signed URL lifecycle and access expiry
+    - metadata indexing and retrieval consistency
+    architecture_boundary: Object-storage ingestion and retrieval module for file/document/media workflows at application layer.
+    proof:
+      beneficiary_matrix_ref: object-storage-pipeline/references/implementation.md#beneficiary-matrix
+      beneficiary_min_categories: 10
+      overlap_review_ref: object-storage-pipeline/references/implementation.md#overlap-review
+      overlap_required_siblings: 3
+      source_audit_min_rows: 1
+    artifacts:
+      skill_md: true
+      implementation_ref: true
+      smoke_required: false

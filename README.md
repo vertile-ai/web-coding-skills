@@ -48,14 +48,24 @@ You can find the full list in the [Full List](#full-list) section below.
 | `web-coding-skills-2d-game` | Developing a browser-based 2D game. Covers dependencies, code patterns, module design, WASM/Worker/WebGL trade-offs, and browser APIs for all six web 2D game drives: control, system, rule, content, physics, and network. |
 | `coding-skills-web-3d-game` | Developing a browser-based 3D game. Covers renderer selection, scene graph design, asset pipeline, memory management, shader strategy, physics integration, and browser API trade-offs across six 3D game drives: render, control, system, content, physics, and network. |
 
-### Release-1 taxonomy philosophy
+### Taxonomy philosophy (dual-axis)
 
-Release-1 expansion uses a **niche-by-category-size** rule: category scope should be specific enough to have distinct implementation pressures (not niche-by-popularity). Broad buckets like plain `SaaS` are intentionally excluded.
+The taxonomy now uses two complementary axes:
+
+1. **Business axis**: narrow product-type categories with distinct implementation pressures (niche-by-category-size, not popularity).
+2. **Architecture axis**: reusable application-layer module categories admitted only when they benefit at least 10 business categories and keep explicit overlap boundaries.
+
+Broad buckets like plain `SaaS` are intentionally excluded.
 
 Manifest and policy docs:
 
 - `docs/taxonomy-manifest.yaml`
 - `docs/skill-authoring-policy.md`
+
+Architecture-category evidence contract:
+
+- Canonical beneficiary/overlap/source-audit evidence lives in `<category>/references/implementation.md`.
+- Manifest rows store machine-readable proof pointers and thresholds only.
 
 ### Operations & Admin Workflows
 
@@ -122,3 +132,24 @@ Manifest and policy docs:
 | `web-coding-skills-kitchen-display` | Kitchen display system for ticket sequencing, prep station routing, and expo/ready state transitions. | Tier 1 |
 | `web-coding-skills-inventory-control` | Inventory control software for stock ledger movements, cycle counts, and reorder policy workflows. | Tier 1 |
 | `web-coding-skills-warehouse-console` | Warehouse console for receiving, put-away, pick-pack-ship, and exception processing. | Tier 1 |
+
+### Architecture — Identity & Access Modules
+
+| Skill | Description | Tier |
+|---|---|---|
+| `web-coding-skills-auth-social-sso` | Auth module for Google/GitHub social sign-in, account linking boundaries, and session lifecycle hardening. | Tier 2 |
+| `web-coding-skills-tenant-rbac-policy` | Tenant-scoped RBAC policy module for role/permission evaluation, policy versions, and audit-safe authorization evolution. | Tier 1 |
+
+### Architecture — Workflow & Integration Modules
+
+| Skill | Description | Tier |
+|---|---|---|
+| `web-coding-skills-async-job-orchestration` | Background job orchestration module with idempotency, retry/backoff, dead-letter handling, and compensation-safe workflow defaults. | Tier 2 |
+| `web-coding-skills-domain-event-pubsub` | Domain-event pub/sub module with contract versioning, outbox publishing, and idempotent consumer boundaries. | Tier 1 |
+| `web-coding-skills-object-storage-pipeline` | Object-storage upload/retrieval module with signed URL lifecycle, metadata consistency, and secure ingest boundaries. | Tier 1 |
+
+### Architecture tier notes
+
+- Tier 1: `SKILL.md` + `references/implementation.md` with required beneficiary/overlap evidence sections.
+- Tier 2: Tier 1 + at least 3 source-audit rows + explicit README coverage.
+- Tier 3: Tier 2 + smoke validation evidence.
