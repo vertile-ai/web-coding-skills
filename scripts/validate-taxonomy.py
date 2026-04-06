@@ -95,6 +95,7 @@ REQUIRED_ARCH_IMPL_SECTIONS = [
 
 SOURCE_AUDIT_HEADER = "| Source type | URL | Code/example anchor | Rationale link |"
 BENEFICIARY_HEADER = "| business_category | benefit_rationale |"
+OVERLAP_HEADER = "| sibling_category | shared_decision_axes_count | unique_boundary_statement | verdict | note |"
 OVERLAP_REQUIRED_TOKENS = [
     "sibling_category",
     "shared_decision_axes_count",
@@ -147,7 +148,7 @@ def count_markdown_table_rows(section_text: str, header: str) -> int:
     for line in lines[header_idx + 2 :]:
         if not line.startswith("|"):
             break
-        if re.match(r"^\|\s*-+\s*(\|\s*-+\s*)+\|?$", line):
+        if re.match(r"^\|\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?$", line):
             continue
         rows += 1
     return rows
@@ -354,13 +355,23 @@ def main() -> None:
         overlap_header_found = all(token in overlap for token in OVERLAP_REQUIRED_TOKENS)
         if not overlap_header_found:
             fail(f"{category} overlap review missing required fields {OVERLAP_REQUIRED_TOKENS}")
-        overlap_rows = 0
-        for line in overlap.splitlines():
-            s = line.strip()
-            if s.startswith("|") and "sibling_category" not in s and not re.match(r"^\|\s*-+\s*(\|\s*-+\s*)+\|?$", s):
-                overlap_rows += 1
+        overlap_rows = count_markdown_table_rows(overlap, OVERLAP_HEADER)
         if overlap_rows < row["proof"]["overlap_required_siblings"]:
             fail(f"{category} overlap review rows {overlap_rows} < required {row['proof']['overlap_required_siblings']}")
+
+        arch_slugs = {r["category"] for r in architecture_rows}
+        for line in overlap.splitlines():
+            s = line.strip()
+            if not s.startswith("|"):
+                continue
+            if "sibling_category" in s:
+                continue
+            if re.match(r"^\|\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?$", s):
+                continue
+            cols = [c.strip() for c in s.split("|")]
+            sibling = cols[1] if len(cols) > 1 else ""
+            if sibling and sibling not in arch_slugs:
+                fail(f"{category} overlap review references unknown sibling '{sibling}' (not an architecture category)")
 
         source_rows = count_markdown_table_rows(source_audit, SOURCE_AUDIT_HEADER)
         min_source_rows = row["proof"]["source_audit_min_rows"]
